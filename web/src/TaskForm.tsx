@@ -1,4 +1,4 @@
-import { Button, TextField } from '@material-ui/core';
+import { Button, Container, TextField } from '@material-ui/core';
 import React from 'react';
 
 type State = { value: string }
@@ -23,11 +23,13 @@ class TaskForm extends React.Component<{}, State> {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <TextField label="name" value={this.state.value} onChange={this.handleChange} />
-        <Button variant="contained" color="primary" type="submit">Submit</Button>
-        {/* <input type="submit" value="Submit" /> */}
-      </form>
+      <Container maxWidth="sm">
+        <form onSubmit={this.handleSubmit}>
+          <TextField label="name" value={this.state.value} onChange={this.handleChange} />
+          <Button variant="contained" color="primary" type="submit">Submit</Button>
+          {/* <input type="submit" value="Submit" /> */}
+        </form>
+      </Container>
     );
   }
 }
