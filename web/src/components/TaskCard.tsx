@@ -24,10 +24,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TaskCard(data: {task: Task}) {
+export default function TaskCard(data: { task: Task }) {
 
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root}>
