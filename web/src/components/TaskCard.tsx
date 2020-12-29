@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Task from '../Task';
+import Timer from './Timer';
 
 const useStyles = makeStyles({
   root: {
@@ -34,14 +35,7 @@ export default function TaskCard(data: { task: Task }) {
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {data.task.title}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        <Timer />
       </CardContent>
       <CardActions>
         <Button size="small">Learn More</Button>
