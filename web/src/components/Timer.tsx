@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useInstanceId } from "./useInstanceId";
 
 export default function Timer() {
 
+  const id = useInstanceId()
   const [date, setDate] = useState(new Date());
 
   function updateTime() {
@@ -24,6 +26,7 @@ export default function Timer() {
 
   return (
     <>
+      id is {id}
       Now: {date.toLocaleTimeString()}
     </>
   );
