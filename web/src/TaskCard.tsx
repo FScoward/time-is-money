@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Task from './Task';
 
 const useStyles = makeStyles({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TaskCard() {
+export default function TaskCard(data: {task: Task}) {
 
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
@@ -32,10 +33,7 @@ export default function TaskCard() {
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+          {data.task.title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           adjective
