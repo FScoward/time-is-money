@@ -12,13 +12,13 @@ export default function Timer() {
   }
 
   useEffect(() => {
-    console.log(`initializing interval`);
+    // console.log(`initializing interval`);
     const interval = setInterval(() => {
       updateTime();
     }, 1000);
 
     return () => {
-      console.log(`clearing interval`);
+      // console.log(`clearing interval`);
       clearInterval(interval);
     };
   });
