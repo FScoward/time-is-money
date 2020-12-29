@@ -1,9 +1,12 @@
 import TimeRecord from './TimeRecord';
 
-interface Task {
+export interface Task {
   id: string,
   title: string
   usageTime: number
   records: TimeRecord[]
 }
-export default Task;
+
+export interface WIPTask extends Task {
+  startTime: Date
+}

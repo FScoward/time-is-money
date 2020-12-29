@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Task from './Task';
+import { Task, WIPTask } from './Task';
 import Timer from './Timer';
 import TimeRecord from './TimeRecord';
 
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TaskCard(props: { task: Task }) {
+export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask: WIPTask) => void) }) {
   const classes = useStyles();
 
   const [task, setTask] = useState<Task>(props.task);
@@ -46,6 +46,11 @@ export default function TaskCard(props: { task: Task }) {
     }
 
     console.log(newTask)
+
+    props.taskHandler({
+      ...task,
+      startTime: new Date()
+    })
 
     setTask(newTask)
   }
