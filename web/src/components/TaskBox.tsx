@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import TaskForm from "./TaskForm"
 import TaskCard from "./TaskCard"
-import Task from "./Task";
+import Task from "../Task";
+import Timer from "./Timer";
 
 export default function TaskBox() {
   const [tasks, setTasks] = useState([]);
@@ -16,6 +17,7 @@ export default function TaskBox() {
   return (
     <>
       <TaskForm />
+      <Timer />
       {taskCards}
       {/* <TaskCard title='test' /> */}
     </>

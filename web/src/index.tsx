@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import TaskBox from './TaskBox';
+import TaskBox from './components/TaskBox';
 
 import reportWebVitals from './reportWebVitals';
 
