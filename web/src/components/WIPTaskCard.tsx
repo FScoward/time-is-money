@@ -5,9 +5,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { WIPTask } from './Task';
+import { Task, WIPTask } from './Task';
+import TimeRecord from './TimeRecord';
 
-export default function WIPTaskCard(props: { task: WIPTask }) {
+export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task: Task) => void) }) {
   const useStyles = makeStyles({
     root: {
       minWidth: 275,
@@ -27,6 +28,23 @@ export default function WIPTaskCard(props: { task: WIPTask }) {
 
   const classes = useStyles();
 
+  function handleClick() {
+    let record = {
+      startTime: props.task.startTime, 
+      endTime: new Date()
+    } as TimeRecord
+    let stopTask = {
+      ...props.task,
+      records: [...props.task.records, record]
+    }
+// todo
+    props.taskHandler(stopTask)
+    
+
+
+
+  }
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -36,7 +54,7 @@ export default function WIPTaskCard(props: { task: WIPTask }) {
         タイマー開始：{props.task.startTime.toLocaleTimeString()}
       </CardContent>
       <CardActions>
-        <Button size="small">Stop Timer</Button>
+        <Button onClick={handleClick} size="small">Stop Timer</Button>
       </CardActions>
     </Card>
   );

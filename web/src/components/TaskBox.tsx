@@ -22,12 +22,18 @@ export default function TaskBox() {
     setTasks(tasks.filter(t => t.id !== newWipTask.id))
   }
 
+  /** wipTask を task リストに戻す */
+  function updateTaskBoxFromWip(task: Task) {
+    setTasks([...tasks, task])
+    setWipTasks(wipTasks.filter(w => w.id !== task.id))
+  }
+
   const taskCardsElement = tasks.map(data => {
     return (<TaskCard key={data.id} task={data} taskHandler={updateTaskBox} />);
   });
 
   const wipTaskCardsElement = wipTasks.map(data => {
-    return (<WIPTaskCard key={data.id} task={data} />);
+    return (<WIPTaskCard key={data.id} task={data} taskHandler={updateTaskBoxFromWip} />);
   })
 
 

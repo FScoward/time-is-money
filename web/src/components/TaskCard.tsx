@@ -33,10 +33,6 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
   useEffect(() => {
   });
 
-  const record = task.records.map(r => {
-    return (r.startTime.toLocaleTimeString())
-  });
-
   function handleClick() {
     let timeRecord: TimeRecord = { startTime: new Date(), endTime: new Date() }
 
@@ -45,12 +41,10 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
       records: [...task.records, timeRecord]
     }
 
-    console.log(newTask)
-
     props.taskHandler({
       ...task,
       startTime: new Date()
-    })
+    } as WIPTask)
 
     setTask(newTask)
   }
@@ -61,7 +55,6 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {task.title}
         </Typography>
-        <p>{record}</p>
         <Timer />
       </CardContent>
       <CardActions>
