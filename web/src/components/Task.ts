@@ -1,7 +1,7 @@
 import TimeRecord from './TimeRecord';
 
 export interface Task {
-  id: string,
+  id: string
   title: string
   usageTime: number
   records: TimeRecord[]

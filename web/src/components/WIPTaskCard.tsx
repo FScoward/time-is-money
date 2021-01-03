@@ -37,12 +37,7 @@ export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task:
       ...props.task,
       records: [...props.task.records, record]
     }
-// todo
     props.taskHandler(stopTask)
-    
-
-
-
   }
 
   return (
