@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Task, WIPTask } from './Task';
 import Timer from './Timer';
-import TimeRecord from './TimeRecord';
+import UsageTime from '../models/UsageTime';
 
 const useStyles = makeStyles({
   root: {
@@ -61,9 +61,8 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
           {task.title}
         </Typography>
         <Typography>
-          usage time: {task.usageTime}
+          usage time: {task.usageTime.toSecondsString()}
         </Typography>
-        <Timer />
       </CardContent>
       <CardActions>
         <Button className={classes.button} onClick={startTimerHandler} size="small">Start Timer</Button>

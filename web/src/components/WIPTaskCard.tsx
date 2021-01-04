@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Task, WIPTask } from './Task';
 import TimeRecord from './TimeRecord';
+import UsageTime from '../models/UsageTime';
 
 export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task: Task) => void) }) {
   const useStyles = makeStyles({
@@ -47,7 +48,7 @@ export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task:
     let stopTask = {
       ...props.task,
       records: [...props.task.records, record],
-      usageTime: props.task.usageTime + usageTime
+      usageTime: new UsageTime({ millis: props.task.usageTime.millis + usageTime })
     }
     props.taskHandler(stopTask)
   }
@@ -58,9 +59,9 @@ export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task:
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {props.task.title}
         </Typography>
-        タイマー開始：{props.task.startTime.toLocaleTimeString()}
+        {/* タイマー開始：{props.task.startTime.toLocaleTimeString()} */}
         <Typography>
-          usage time: {props.task.usageTime}
+          usage time: {props.task.usageTime.toSecondsString()}
         </Typography>
       </CardContent>
       <CardActions>

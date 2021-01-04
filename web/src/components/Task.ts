@@ -1,9 +1,10 @@
+import UsageTime from '../models/UsageTime';
 import TimeRecord from './TimeRecord';
 
 export interface Task {
   id: string
   title: string
-  usageTime: number
+  usageTime: UsageTime
   records: TimeRecord[]
 }
 
