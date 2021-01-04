@@ -33,29 +33,18 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
   useEffect(() => {
   });
 
-  function handleClick() {
-    let timeRecord: TimeRecord = { startTime: new Date(), endTime: new Date() }
-
-    let newTask = {
-      ...task,
-      records: [...task.records, timeRecord]
-    }
-
-    props.taskHandler({
+  function startTimerHandler() {
+    let targetTask = {
       ...task,
       startTime: new Date()
-    } as WIPTask)
-
-    setTask(newTask)
+    } as WIPTask
+    props.taskHandler(targetTask)
   }
 
   // todo: タイマーストップするときにusagetimeに加算するようにする
   let sum = task.records
-    // .map(r => (r.endTime.valueOf() - r.startTime.valueOf()))
     .map(r => (r.endTime.getTime() - r.startTime.getTime()))
     .reduce((sum, current) => sum + current, 0)
-
-
 
   return (
     <Card className={classes.root}>
@@ -67,7 +56,7 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
         <Timer />
       </CardContent>
       <CardActions>
-        <Button onClick={handleClick} size="small">Start Timer</Button>
+        <Button onClick={startTimerHandler} size="small">Start Timer</Button>
       </CardActions>
     </Card>
   );
