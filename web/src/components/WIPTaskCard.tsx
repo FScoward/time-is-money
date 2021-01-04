@@ -43,9 +43,11 @@ export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task:
       startTime: props.task.startTime,
       endTime: new Date()
     } as TimeRecord
+    let usageTime = record.endTime.getTime() - record.startTime.getTime()
     let stopTask = {
       ...props.task,
-      records: [...props.task.records, record]
+      records: [...props.task.records, record],
+      usageTime: props.task.usageTime + usageTime
     }
     props.taskHandler(stopTask)
   }
@@ -57,6 +59,9 @@ export default function WIPTaskCard(props: { task: WIPTask, taskHandler: ((task:
           {props.task.title}
         </Typography>
         タイマー開始：{props.task.startTime.toLocaleTimeString()}
+        <Typography>
+          usage time: {props.task.usageTime}
+        </Typography>
       </CardContent>
       <CardActions>
         <Button className={classes.button} onClick={stopTimerHandler} size="small">Stop Timer</Button>

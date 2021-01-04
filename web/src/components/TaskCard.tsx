@@ -54,17 +54,14 @@ export default function TaskCard(props: { task: Task, taskHandler: ((newWipTask:
     props.taskHandler(targetTask)
   }
 
-  // todo: タイマーストップするときにusagetimeに加算するようにする
-  let sum = task.records
-    .map(r => (r.endTime.getTime() - r.startTime.getTime()))
-    .reduce((sum, current) => sum + current, 0)
-
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {task.title}
-          usage time: {sum}
+        </Typography>
+        <Typography>
+          usage time: {task.usageTime}
         </Typography>
         <Timer />
       </CardContent>
