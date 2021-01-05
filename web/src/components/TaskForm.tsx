@@ -1,37 +1,22 @@
 import { Button, Container, TextField } from '@material-ui/core';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
-type State = { value: string }
+type Inputs = {
+  name: string
+}
+function TaskForm() {
+  const { register, handleSubmit, watch, errors } = useForm<Inputs>();
+  const onSubmit = (data: Inputs) => console.log(data);
 
-class TaskForm extends React.Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
-    this.state = { value: '' };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event: any) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event: any) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <Container maxWidth="sm">
-        <form onSubmit={this.handleSubmit}>
-          <TextField label="name" value={this.state.value} onChange={this.handleChange} />
-          <Button variant="contained" color="primary" type="submit">Submit</Button>
-          {/* <input type="submit" value="Submit" /> */}
-        </form>
-      </Container>
-    );
-  }
+  return (
+    <Container maxWidth="sm">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField label="name" name="name" inputRef={register} />
+        <Button variant="contained" color="primary" type="submit">Submit</Button>
+      </form>
+    </Container>
+  );
 }
 
 export default TaskForm;
