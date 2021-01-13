@@ -6,8 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Task, WIPTask } from './Task';
-import Timer from './Timer';
-import UsageTime from '../models/UsageTime';
 
 const useStyles = makeStyles({
   root: {
