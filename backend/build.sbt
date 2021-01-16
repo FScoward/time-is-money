@@ -56,4 +56,6 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic",
   "io.circe" %% "circe-parser"
 ).map(_ % circeVersion)
+libraryDependencies += "io.circe" %% "circe-core" % "0.13.0"
+
 /** <-- circe */
