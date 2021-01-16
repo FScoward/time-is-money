@@ -1,18 +1,19 @@
 package models.request
 
+import io.circe.parser._
 import org.scalatest.funspec.AnyFunSpec
-import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+
 import java.time.ZonedDateTime
 
 class TaskSpec extends AnyFunSpec {
   describe("request json") {
     it("parse") {
       val taskName = "taskの名前"
+      val startTimeStr = "2021-01-11T10:00:00+09:00"
+      val endTimeStr = "2021-01-11T10:00:00+09:00"
       val timeRecord = TimeRecord(
-        ZonedDateTime.parse("2021-01-11T10:00:00+09:00"),
-        ZonedDateTime.parse("2021-01-11T10:00:00+09:00")
+        ZonedDateTime.parse(startTimeStr),
+        ZonedDateTime.parse(endTimeStr)
       )
       val task = Task(
         name = taskName,
@@ -27,8 +28,8 @@ class TaskSpec extends AnyFunSpec {
         |  "name" : "taskの名前",
         |  "records" : [
         |    {
-        |      "startTime" : "2021-01-11T10:00:00+09:00",
-        |      "endTime" : "2021-01-11T10:00:00+09:00"
+        |      "startTime" : "$startTimeStr",
+        |      "endTime" : "$endTimeStr"
         |    }
         |  ]
             |}""".stripMargin
